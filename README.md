@@ -15,13 +15,15 @@ Each folder in this repository contains the scripts required to recreate the ana
 	- `GOplot.R`: Slim and compare GOfuncR terms from one comparison to other comparisons.
 	
 - `Figure 3`: Consensus DMR profiles.
-	- `consensusDMRs.sh`: Create a consensus DMR profile from multiple comparisons for consensusPCA.R.
+	- `consensusDMRs.sh`: Create a consensus DMR profile from multiple comparisons for `consensusPCA.R`.
 	- `ConsensusPCA.R`: PCA of all samples using consensus DMRs.
 	- `machineLearning.R`: DMR machine learning feature selection analysis and heatmap.
 	- `venn.R`: Create an area-proportional Venn diagram based on overlaps of genomic coordinates from multiple comparisons.
 	
 - `Figure 4`: Divergent DNA hyper- and hypo-methylation profiles.
-	- `chromatinPlots.R`: Parsing and summary heatmaps for multiple LOLA chromHMM and Roadmap enrichment analyses from multiple comparisons.
+	- `chromatinPlots`: Parsing and plots for Roadmap epigenomics chromHMM core 15-state model and 5 core histone modifications from 127 reference epigenomes.
+		- `chromatinPlots.R`: Parsing and summary heatmaps for multiple LOLA chromHMM and core histone modification enrichment analyses from multiple comparisons.
+		- `roadmap_epigenomics_index.txt`: The index file of histone modifications needed by `chromatinPlots.R`.
 	- `panTissue`: The scripts and annotation files for the Down Syndrome pan-tissue meta-analysis that utilizes [GAT](https://github.com/AndreasHeger/gat).
 		- `annotations`: Folder with bed files for testing. References are in the manuscript.
 		- `both`: Folder with GAT script and plotting script for each individual comparison.
@@ -37,8 +39,8 @@ Each folder in this repository contains the scripts required to recreate the ana
 		- `mmc3.xlsx`: RUNX1 ChIP-seq peaks. Reference is in the manuscript.
 		- `RUNX1_ChIP_Overlap.R`: Analysis and plot of integration of WGBS data with RUNX1 ChIP-seq data.
 	- `Transcription_Factor_Analysis`
-		- `homer.sh`: Parallel HOMER known transcription factor motif analyses for multiple DMRichR comparisons.
-		- `marge.R`: Parsing and summary heatmap for multiple DMR HOMER comparisons using MARGE.
+		- `homer.sh`: Parallel HOMER known transcription factor motif analyses for multiple comparisons.
+		- `marge.R`: Parsing and summary heatmap for HOMER analyses of multiple comparisons using MARGE.
 		
 ## Reference
 
