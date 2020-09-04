@@ -1,4 +1,5 @@
-# Parallel runs of Down syndrome pan-tissue analysis with GAT
+# run_DS_GAT
+# Main script for parallel runs of the Down syndrome pan-tissue meta-analysis for all comparisons
 # If you modify this you will also have to change the scripts and files in the other folders
 # By Ben Laufer
 

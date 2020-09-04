@@ -1,4 +1,5 @@
-# Parallel DM.R runs for a high resource node
+# DMR_node
+# Example of how to perform multiple DM.R runs in parallel on a login node
 # Run from one level above the cytosine_reports folder with sample_info.xlsx files for each contrast name (i.e. sample_info_DSvsTD.xlsx)
 # By Ben Laufer
 

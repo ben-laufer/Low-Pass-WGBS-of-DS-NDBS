@@ -1,4 +1,5 @@
-# Dwon syndrome pan-tissue enrichment plot
+# panTissuePlot
+# Plot of the analyses results for all comparisons from `runs_DS_GAT.sh`
 # This script requires data from run_DS_GAT.sh
 # By Ben Laufer
 

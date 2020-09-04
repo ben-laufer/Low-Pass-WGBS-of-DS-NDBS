@@ -1,34 +1,24 @@
-# Consensus DMR PCA
+# consensusPCA
+# PCA of all samples using consensus DMRs
 # Run consensusDMRs.sh first
 # By Ben Laufer
 
-# Load packages -----------------------------------------------------------
-
-.libPaths("/share/lasallelab/programs/DMRichR/R_3.6")
-suppressPackageStartupMessages(library(DMRichR, attach.required = T))
-
-setwd("/share/lasallelab/Ben/DS_DBS/DMRs/cytosine_reports")
-
-load("consensus/consensus_bismark.RData")
-load("consensus/consensus_bsseq.RData")
-
-# Tidy diagnosis ----------------------------------------------------------
-
-pData(bs.filtered.bsseq)$Diagnosis <- pData(bs.filtered.bsseq)$Diagnosis %>% 
-  dplyr::recode_factor(.,
-                       "DownSyndrome" = "Down Syndrome",
-                       "DevelopmentalDelay" = "Developmental Delay",
-                       "Control" = "Typical Development"
-  )
-
-# Function ----------------------------------------------------------------
-
-PCA <- function(matrix = matrix,
-                group = NA){
+#' PCA2
+#' @description Performs and plots a PCA from individual smoothed methylation values
+#' @param matrix Matrix of transposed individual methylation values
+#' @param group Ordered character vector of sample groupings
+#' @return A \code{ggplot} object that can be viewed by calling it,
+#'  saved with \code{ggplot2::ggsave()}, or further modified by adding \code{ggplot2} syntax.
+#' @import ggbiplot
+#' @importFrom dplyr case_when
+#' @importFrom forcats fct_rev
+#' @importFrom glue glue
+#' @export PCA2
+#' 
+PCA2 <- function(matrix = matrix,
+                 group = NA){
   print(glue::glue("Performing PCA..."))
   data.pca <- prcomp(matrix, center = TRUE, scale. = TRUE)
-  #plot(data.pca, type = "l")
-  #print(summary(data.pca))
   group <- factor(group, levels = unique(forcats::fct_rev(group)))
   
   cat("Plotting PCA...")
@@ -58,6 +48,25 @@ PCA <- function(matrix = matrix,
 
 # Run ---------------------------------------------------------------------
 
+.libPaths("/share/lasallelab/programs/DMRichR/R_3.6")
+suppressPackageStartupMessages(library(DMRichR, attach.required = T))
+options(readr.num_columns = 0)
+
+setwd("/share/lasallelab/Ben/DS_DBS/DMRs/cytosine_reports")
+
+load("consensus/consensus_bismark.RData")
+load("consensus/consensus_bsseq.RData")
+
+# Tidy diagnosis
+
+pData(bs.filtered.bsseq)$Diagnosis <- pData(bs.filtered.bsseq)$Diagnosis %>% 
+  dplyr::recode_factor("DownSyndrome" = "Down Syndrome",
+                       "DevelopmentalDelay" = "Developmental Delay",
+                       "Control" = "Typical Development"
+  )
+
+# Read, getMeth, and plot
+
 readr::read_tsv("consensus/ConsensusDMRs.bed",
                 col_names = c("chr", "start", "end")
                 ) %>% 
@@ -68,15 +77,15 @@ readr::read_tsv("consensus/ConsensusDMRs.bed",
                    type = "smooth",
                    what = "perRegion"),
     check.names = FALSE)
-  ) %>%
+    ) %>%
   dplyr::select(-seqnames, -start, -end, -width, -strand) %>% 
   na.omit() %>%
   as.matrix() %>%
   t() %>% 
-  PCA(group = bs.filtered.bsseq %>%
-                 pData() %>%
-                 dplyr::as_tibble() %>%
-                 dplyr::pull(!!testCovariate)
+  PCA2(group = bs.filtered.bsseq %>%
+         pData() %>%
+         dplyr::as_tibble() %>%
+         dplyr::pull(!!testCovariate)
       ) %>%
   ggplot2::ggsave("consensus/conensusDMR_PCA.pdf",
                   plot = .,

@@ -1,4 +1,5 @@
-# WGBS machine learning analysis and heatmap
+# machineLearning
+# DMR machine learning feature selection analysis and heatmap
 # By Hyeyeon Hwang
 
 .libPaths("/share/lasallelab/programs/DMRichR/R_3.6")

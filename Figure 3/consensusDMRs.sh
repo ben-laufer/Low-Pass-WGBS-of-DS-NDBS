@@ -1,4 +1,5 @@
-# Consensus DMRs for consensusPCA.R
+# consensusDMRs
+# Create a consensus DMR profile from multiple comparisons
 # By Ben Laufer
 
 module load bedtools

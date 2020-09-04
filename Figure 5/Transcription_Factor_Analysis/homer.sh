@@ -1,4 +1,5 @@
-# HOMER analysis for DMRichR runs
+# homer
+# Parallel HOMER known transcription factor motif analyses for multiple DMRichR comparisons
 # By Ben Laufer
 
 module load homer

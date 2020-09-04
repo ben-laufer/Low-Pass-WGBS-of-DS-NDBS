@@ -1,4 +1,5 @@
-# Consensus blocks
+# consensusBlocks
+# Create a consensus block profile from multiple comparisons
 # By Ben Laufer
 
 module load bedtools

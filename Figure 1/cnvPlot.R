@@ -1,4 +1,5 @@
-# chr21 CNV plot
+# cnvPlot
+# Plot of chromosome 21 copy number using output from CNV_Me
 # Run CNV_Me first (https://github.com/hyeyeon-hwang/CNV_Me)
 # By Hyeyeon Hwang
 

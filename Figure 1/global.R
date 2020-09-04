@@ -1,4 +1,5 @@
-# Global methylation analysis and single CpG density plot
+# global
+# Process all samples for equal CpG coverage and smooth, test for global methylation differences, and create a single CpG density plot
 # By Ben Laufer
 
 # Load packages -----------------------------------------------------------
@@ -58,8 +59,7 @@ end_time - start_time
 # Tidy diagnosis ----------------------------------------------------------
 
 pData(bs.filtered.bsseq)$Diagnosis <- pData(bs.filtered.bsseq)$Diagnosis %>% 
-  dplyr::recode_factor(.,
-                       "Control" = "Typical Development",
+  dplyr::recode_factor("Control" = "Typical Development",
                        "DevelopmentalDelay" = "Developmental Delay",
                        "DownSyndrome" = "Down Syndrome"
   )

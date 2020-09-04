@@ -1,18 +1,20 @@
-# Create an area-proportional Venn plot based on genomic coordinates
+# venn
+# Create an area-proportional Venn diagram based on overlaps of genomic coordinates from multiple comparisons
 # By Ben Laufer
 
 # Packages ----------------------------------------------------------------
 
-rm(list = ls())
-
 .libPaths("/share/lasallelab/programs/DMRichR/R_3.6")
-# install.packages("Vennerable", repos="http://R-Forge.R-project.org", type="source")
-packages <-  c("DMRichR","ChIPpeakAnno", "Vennerable")
+
+if (!requireNamespace("marge", quietly = TRUE))
+  install.packages("Vennerable", repos = "http://R-Forge.R-project.org", type = "source")
+
+packages <- c("DMRichR", "ChIPpeakAnno", "Vennerable")
 stopifnot(suppressMessages(sapply(packages, require, character.only = TRUE)))
 
-setwd("/share/lasallelab/Ben/DS_DBS/DMRs/")
-
 # Load DMRs ---------------------------------------------------------------
+
+setwd("/share/lasallelab/Ben/DS_DBS/DMRs/")
 
 load("DSvsTD/Production/RData/DMRs.RData")
 DSvsTD <- sigRegions
@@ -42,11 +44,11 @@ res <- ChIPpeakAnno::makeVennDiagram(Peaks = list(DSvsTD,
 
 # ref: https://support.bioconductor.org/p/67429/
 venn_cnt2venn <- function(venn_cnt){
-  n <- which(colnames(venn_cnt)=="Counts") - 1
-  SetNames=colnames(venn_cnt)[1:n]
-  Weight=venn_cnt[,"Counts"]
+  n <- which(colnames(venn_cnt) == "Counts") - 1
+  SetNames <- colnames(venn_cnt)[1:n]
+  Weight <- venn_cnt[,"Counts"]
   names(Weight) <- apply(venn_cnt[,1:n], 1, paste, collapse="")
-  Vennerable::Venn(SetNames=SetNames, Weight=Weight)
+  Vennerable::Venn(SetNames = SetNames, Weight = Weight)
 }
 v <- venn_cnt2venn(res$vennCounts)
 

@@ -1,4 +1,5 @@
-# RUNX1 block plot
+# RUNX1_blockPlot
+# Plot the RUNX1 consensus block using all samples
 # Run conensusBlocks.sh first
 # By Ben Laufer
 
