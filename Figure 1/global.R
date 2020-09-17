@@ -5,13 +5,13 @@
 # Load packages -----------------------------------------------------------
 
 .libPaths("/share/lasallelab/programs/DMRichR/R_3.6")
-suppressPackageStartupMessages(library(DMRichR, attach.required = T))
-library(ggplot2)
+packages <- c("DMRichR", "broom", "tidyverse")
+stopifnot(suppressMessages(sapply(packages, require, character.only = TRUE)))
 
 setwd("/share/lasallelab/Ben/DS_DBS/DMRs/cytosine_reports")
 
-glue::glue("Loading {packages}")
 packages <- c("BSgenome.Hsapiens.UCSC.hg38", "TxDb.Hsapiens.UCSC.hg38.knownGene", "org.Hs.eg.db")
+glue::glue("Loading {packages}")
 stopifnot(suppressMessages(sapply(packages, require, character.only = TRUE)))
 
 goi <- BSgenome.Hsapiens.UCSC.hg38

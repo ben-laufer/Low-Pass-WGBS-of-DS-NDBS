@@ -49,7 +49,8 @@ PCA2 <- function(matrix = matrix,
 # Run ---------------------------------------------------------------------
 
 .libPaths("/share/lasallelab/programs/DMRichR/R_3.6")
-suppressPackageStartupMessages(library(DMRichR, attach.required = T))
+packages <- c("DMRichR", "tidyverse")
+stopifnot(suppressMessages(sapply(packages, require, character.only = TRUE)))
 options(readr.num_columns = 0)
 
 setwd("/share/lasallelab/Ben/DS_DBS/DMRs/cytosine_reports")

@@ -26,7 +26,7 @@ marge <- function(contrast = contrast,
   
   stopifnot(direction %in% c("both", "hyper", "hypo"))
   
-  print(glue::glue("Tidying HOMER results for {tidyDirection} analyses from the {tidyContrasts} contasts",
+  print(glue::glue("Tidying HOMER results for {tidyDirection} analyses from the {tidyContrasts} contrasts",
                    tidyDirection = glue::glue_collapse({direction}, sep = ", ", last = " and "),
                    tidyContrasts = glue::glue_collapse({contrast}, sep = ", ", last = " and ")))
   

@@ -57,7 +57,8 @@ smoothPheatmap2 <- function(bs.filtered.bsseq = bs.filtered.bsseq,
 # Run ---------------------------------------------------------------------
 
 .libPaths("/share/lasallelab/programs/DMRichR/R_3.6")
-suppressPackageStartupMessages(library(DMRichR, attach.required = T))
+packages <- c("DMRichR", "tidyverse")
+stopifnot(suppressMessages(sapply(packages, require, character.only = TRUE)))
 
 setwd("/share/lasallelab/Ben/DS_DBS/DMRs/")
 testCovariate <- "Diagnosis"
