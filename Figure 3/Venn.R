@@ -6,7 +6,7 @@
 
 .libPaths("/share/lasallelab/programs/DMRichR/R_3.6")
 
-if (!requireNamespace("marge", quietly = TRUE))
+if (!requireNamespace("Vennerable", quietly = TRUE))
   install.packages("Vennerable", repos = "http://R-Forge.R-project.org", type = "source")
 
 packages <- c("DMRichR", "ChIPpeakAnno", "Vennerable")
