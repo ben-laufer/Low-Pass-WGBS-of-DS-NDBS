@@ -7,26 +7,24 @@
 .libPaths("/share/lasallelab/programs/DMRichR/R_3.6")
 
 if (!requireNamespace("Vennerable", quietly = TRUE))
-  install.packages("Vennerable", repos = "http://R-Forge.R-project.org", type = "source")
-
-packages <- c("DMRichR", "ChIPpeakAnno", "Vennerable")
+  BiocManager::install("js229/Vennerable")
+  
+packages <- c("DMRichR", "ChIPpeakAnno", "Vennerable", "svglite")
 stopifnot(suppressMessages(sapply(packages, require, character.only = TRUE)))
 
 # Load DMRs ---------------------------------------------------------------
 
 setwd("/share/lasallelab/Ben/DS_DBS/DMRs/")
 
-load("DSvsTD/Production/RData/DMRs.RData")
-DSvsTD <- sigRegions
-rm(sigRegions, regions)
+loadDMRs <- function(name){
+  load(glue::glue("{name}/Production/RData/DMRs.RData"))
+  assign(name, sigRegions, envir = .GlobalEnv)
+  rm(sigRegions, regions)
+}
 
-load("DSvsDD/Production/RData/DMRs.RData")
-DSvsDD <- sigRegions
-rm(sigRegions, regions)
-
-load("DDvsTD/Production/RData/DMRs.RData")
-DDvsTD <- sigRegions
-rm(sigRegions, regions)
+contrasts <- c("DSvsTD", "DSvsDD", "DDvsTD")
+  
+purrr::walk(contrasts, loadDMRs)
 
 # Plot Venn ---------------------------------------------------------------
 
