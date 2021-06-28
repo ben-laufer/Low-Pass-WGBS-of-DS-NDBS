@@ -1,6 +1,6 @@
 # Low-Pass Whole Genome Bisulfite Sequencing of Neonatal Dried Blood Spots
 
-Each folder in this repository contains the scripts required to recreate the analyses and plots for the main figures from the manuscript "Low-Pass Whole Genome Bisulfite Sequencing of Neonatal Dried Blood Spots Identifies a Role for RUNX1 in Down Syndrome DNA Methylation Profiles". 
+Each folder in this repository contains the scripts required to recreate the analyses and plots for the main figures from the manuscript: "Low-Pass Whole Genome Bisulfite Sequencing of Neonatal Dried Blood Spots Identifies a Role for RUNX1 in Down Syndrome DNA Methylation Profiles". 
 
 ## Scripts
 
@@ -46,7 +46,7 @@ Each folder in this repository contains the scripts required to recreate the ana
 
 If you modify this code and utilize it please cite the publication:
 
-Laufer BI, Hwang H, Jianu JM, Mordaunt CE, Korf IF, Hertz-Picciotto I, LaSalle JM. Low-Pass Whole Genome Bisulfite Sequencing of Neonatal Dried Blood Spots Identifies a Role for RUNX1 in Down Syndrome DNA Methylation Profiles. *bioRxiv* preprint. **doi**: [10.1101/2020.06.18.157693](https://doi.org/10.1101/2020.06.18.157693)
+Laufer BI, Hwang H, Jianu JM, Mordaunt CE, Korf IF, Hertz-Picciotto I, LaSalle JM. Low-Pass Whole Genome Bisulfite Sequencing of Neonatal Dried Blood Spots Identifies a Role for RUNX1 in Down Syndrome DNA Methylation Profiles. *Human Molecular Genetics*, 2020. **doi**: [10.1093/hmg/ddaa218](https://doi.org/10.1093/hmg/ddaa218)
 
 ## Acknowledgements
 
